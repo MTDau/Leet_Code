@@ -7,27 +7,30 @@ class Solution
 public:
     bool isMatch(string s, string p)
     {
-        int n = s.length(), m = p.length();
-        bool dp[n + 1][m + 1];
-        memset(dp, false, sizeof(dp));
-        dp[0][0] = true;
-
-        for (int i = 0; i <= n; i++)
+        int size_s = s.size();
+        int size_p = p.size();
+        bool table[size_s + 1][size_p + 1];
+        memset(table, false, sizeof(table));
+        table[0][0] = true;
+        for (int i{0}; i <= size_s; i++)
         {
-            for (int j = 1; j <= m; j++)
+            for (int j{1}; j <= size_p; j++)
             {
                 if (p[j - 1] == '*')
                 {
-                    dp[i][j] = dp[i][j - 2] || (i > 0 && (s[i - 1] == p[j - 2] || p[j - 2] == '.') && dp[i - 1][j]);
+                    table[i][j] =
+                        table[i][j - 2] ||
+                        (i > 0 && (s[i - 1] == p[j - 2] || p[j - 2] == '.') &&
+                         table[i - 1][j]);
                 }
                 else
                 {
-                    dp[i][j] = i > 0 && dp[i - 1][j - 1] && (s[i - 1] == p[j - 1] || p[j - 1] == '.');
+                    table[i][j] = i > 0 && table[i - 1][j - 1] &&
+                                  (s[i - 1] == p[j - 1] || p[j - 1] == '.');
                 }
             }
         }
-
-        return dp[n][m];
+        return table[size_s][size_p];
     }
 };
 int main()
