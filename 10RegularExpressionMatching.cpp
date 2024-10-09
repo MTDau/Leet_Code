@@ -39,3 +39,32 @@ int main()
     std::cout << std::boolalpha << a.isMatch("aaaaaaa", "a*");
     return 0;
 }
+
+
+
+/*
+Recursive take longer time 
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int size_s = s.size();
+        int size_p = p.size();
+        return check_pat(0, 0, size_s, size_p, s, p);
+    }
+    bool check_pat(int i, int j, int size_s, int size_p, string& s, string& p) {
+        if (i >= size_s && j >= size_p)
+            return true;
+        if (j >= size_p)
+            return false;
+        bool match = i < size_s && (s[i] == p[j] || p[j] == '.');
+        if (j + 1 < size_p && p[j + 1] == '*') {
+            return check_pat(i, j + 2, size_s, size_p, s, p) ||
+                   match && check_pat(i + 1, j, size_s, size_p, s, p);
+        }
+        if (match) {
+            return check_pat(i + 1, j + 1, size_s, size_p, s, p);
+        }
+        return false;
+    };
+};
+*/
