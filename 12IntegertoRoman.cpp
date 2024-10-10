@@ -1,3 +1,22 @@
+//Key and value array.
+class Solution {
+public:
+    string intToRoman(int num) {
+        std::string result{};
+        int num_set[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        std::string key[] = {"M",  "CM", "D",  "CD", "C",  "XC", "L",
+                             "XL", "X",  "IX", "V",  "IV", "I"};
+        int pos = 0;
+        while (num > 0) {
+            while (num < num_set[pos])
+                pos++;
+            num -= num_set[pos];
+            result += key[pos];
+        }
+        return result;
+    }
+};
+
 //Brute force
 class Solution {
 public:
