@@ -22,7 +22,7 @@ public:
     }
 };
 
-//Took too much time don't work
+//Took too much time don't work, over complicated.
 class Solution
 {
 public:
