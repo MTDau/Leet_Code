@@ -11,6 +11,7 @@ public:
         else if (dividend == INT_MIN && divisor == 1)
             return INT_MIN;
         else if (dividend == INT_MAX && divisor == -1)
+            //INT_MIN is 1 value away from INT_MAX
             return INT_MIN + 1;
         int sign{1};
         if (dividend == divisor)
