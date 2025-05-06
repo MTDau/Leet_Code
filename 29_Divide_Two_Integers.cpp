@@ -19,7 +19,7 @@ public:
         if (dividend > 0 && divisor < 0 ||
             dividend < 0 && divisor > 0) // sign of result
             sign = -1;
-        // Dividend can not contain all number
+        // Dividend and divisor sometime can not contain all number
         unsigned int a = abs(static_cast<long long>(dividend));
         unsigned int b = abs(static_cast<long long>(divisor));
         int result{};
