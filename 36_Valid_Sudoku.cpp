@@ -106,3 +106,19 @@ public:
         return true;
     }
 };
+/*
+explanation for box index:
+we know i and j run from 0 ->8 and we need 9 box to do the check so we also need box 0->8 to do calculation.
+box[0] will be i from 0->2 and j from 0->2
+box[1] will be i from 0->2 and j from 3->5
+box[2] will be i from 0->2 and j from 6->8
+box[3] will be i from 3->5 and j from 0->2
+box[4] will be i from 3->5 and j from 3->5
+box[5] will be i from 3->5 and j from 6->8
+box[6] will be i from 6->8 and j from 0->2
+box[7] will be i from 6->8 and j from 3->5
+box[8] will be i from 6->8 and j from 6->8
+
+therefore boxIndex = (i / 3) * 3 + j / 3;
+
+*/
