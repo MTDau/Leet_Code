@@ -1,5 +1,4 @@
 #include <vector>
-
 bool is_valid(std::vector<std::vector<char>> &board, int &row, int &collum, char &c);
 bool solve(std::vector<std::vector<char>> &board);
 class Solution
