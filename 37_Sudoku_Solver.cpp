@@ -25,11 +25,11 @@ bool solve(std::vector<std::vector<char>> &board)
                     {
                         board[i][j] = c;
                         if (solve(board)) // call again with the board updated
-                            return true;
-                        board[i][j] = '.'; // Back track
+                            return true;                        
                     }
+                    board[i][j] = '.'; // Back track
                 }
-                return false; // No case can fit the board
+                return false; // No case can fit the position return to the previous pos
             }
         }
     }
