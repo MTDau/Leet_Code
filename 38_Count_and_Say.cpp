@@ -1,3 +1,27 @@
+//Way better recursive call
+class Solution
+{
+public:
+    std::string countAndSay(int n)
+    {
+        if (n == 1)
+            return "1";
+        std::string prev_result = countAndSay(n - 1);
+        std::string result = "";
+        int size = prev_result.size();
+        for (int i{}; i < size; i++){
+            char c = prev_result[i];
+            int count{1};
+            while (i < size - 1 && prev_result[i] == prev_result[i+1]){
+                count++;
+                i++;
+            }
+            result = result + std::to_string(count) + std::string(1,c);
+
+        }
+        return result;
+    }
+};
 //First though no recursive call
 #include <string>
 
