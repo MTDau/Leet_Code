@@ -53,7 +53,6 @@ public:
 };
 //First though no recursive call
 #include <string>
-
 std::string encode(std::string a);
 class Solution
 {
@@ -68,7 +67,6 @@ public:
         return result;
     }
 };
-
 std::string encode(std::string a)
 {
     int size = a.size();
@@ -81,7 +79,8 @@ std::string encode(std::string a)
         else
         {
             int duplicate = ptr2 - ptr1;
-            result = result + std::to_string(duplicate) + a[ptr2 - 1];
+            result += (duplicate +'0');
+            result += a[ptr2 - 1];
             ptr1 = ptr2;
         }
     }
@@ -89,11 +88,8 @@ std::string encode(std::string a)
     if (a[ptr2] == a[ptr1])
     {
         int dup = ptr2 - ptr1 + 1;
-        result = result + std::to_string(dup) + a[ptr1];
-    }
-    else if (a[ptr2] != a[ptr2 - 1])
-    {
-        result = result + "1" + a[ptr2];
+        result += (dup + '0');
+        result += a[ptr1];
     }
     return result;
 }
