@@ -1,4 +1,4 @@
-//First though
+//First though no recursive call
 #include <string>
 
 std::string encode(std::string a);
