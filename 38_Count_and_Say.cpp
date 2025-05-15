@@ -1,3 +1,32 @@
+//Update of the first solution best 
+#include <string>
+using std::string;
+class Solution {
+public:
+    string countAndSay(int n) {
+        string ans = "1", s_ans;
+        int count;
+        for (int i{1}; i < n; i++) {
+            s_ans = "";
+            char curr = ans[0];
+            count = 0;
+            for (int j = 0; j < ans.size(); j++) {
+                if (curr == ans[j])
+                    count++;
+                else {
+                    s_ans += (count + '0');
+                    s_ans += curr;
+                    count = 1;
+                    curr = ans[j];
+                }
+            }
+            s_ans += (count + '0');
+            s_ans += curr;
+            ans = s_ans;
+        }
+        return ans;
+    }
+};
 //Way better recursive call
 class Solution
 {
