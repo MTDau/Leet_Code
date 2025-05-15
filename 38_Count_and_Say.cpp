@@ -1,3 +1,4 @@
+//First though
 #include <string>
 
 std::string encode(std::string a);
