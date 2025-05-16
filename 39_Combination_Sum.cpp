@@ -1,3 +1,32 @@
+//Recursive call with backtrack
+#include <vector>
+using std::vector;
+
+class Solution
+{
+public:
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target)
+    {
+
+        vector<vector<int>> result{};
+        vector<int> semi{};
+        solve(candidates, target,result,semi,0,0);
+        return result;
+    }
+    void solve(vector<int> &candidates, int target,vector<vector<int>>& result,vector<int>& semi, int index, int total){
+        if (total == target){//Last case
+            result.push_back(semi);
+            return;
+        }
+        if (total > target || !(index < candidates.size())){//Cannot find the combination in candidates
+            return;
+        }
+        semi.push_back(candidates[index]);
+        solve(candidates, target, result, semi,index,total + candidates[index]);
+        semi.pop_back();//Backtrack when no result for that type of combination.
+        solve(candidates, target, result, semi,index+1,total);
+    }
+};
 //Not complete logic redo require.
 #include <vector>
 #include <algorithm>
