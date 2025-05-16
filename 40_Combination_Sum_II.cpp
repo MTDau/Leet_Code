@@ -22,11 +22,9 @@ public:
             return;
         }
         if (target < 0)
-        {
             return;
-        }
         for (int i = index; i < candidates.size(); i++)
-        {
+        {//Skip duplicate occurrent.
             if (i > index && candidates[i] == candidates[i - 1])
                 continue;
             if (candidates[i] > target)
@@ -37,7 +35,6 @@ public:
         }
     }
 };
-
 //My solution not complete need different logic
 class Solution
 {
