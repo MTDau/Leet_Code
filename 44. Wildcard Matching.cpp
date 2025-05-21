@@ -1,3 +1,55 @@
+//Update of the original code
+#include <vector>
+#include <algorithm>
+#include <string>
+
+class Solution
+{
+public:
+    bool isMatch(std::string s, std::string p)
+    {
+        int s_ptr = 0, p_ptr = 0;
+        int s_size = s.size(), p_size = p.size();
+        int start_idx = -1, s_temp_idx = -1; // Start of the sequence
+        while (s_ptr < s_size)
+        {
+            if ((s[s_ptr] == p[p_ptr] || p[p_ptr] == '?') && p_ptr < p_size)
+            {
+                s_ptr++;
+                p_ptr++;
+            }
+            else if (p[p_ptr] == '*' && p_ptr < p_size)
+            {
+                start_idx = p_ptr;
+                s_temp_idx = s_ptr;
+                p_ptr++;
+            }
+            // check if there is matching * before
+            else if (start_idx == -1)
+            {
+                return false;
+            }
+            else
+            {//Continue with the sequence
+                p_ptr = start_idx + 1;
+                s_ptr = ++s_temp_idx;
+            }
+        }
+        if (s_ptr != s_size) // Not complete the check
+        {
+            return false;
+        }
+        // Clear out the end of p string if * match with empty
+        // if there left of unmatch then return false
+        for (int i = p_ptr; i < p_size; ++i)
+        {
+            if (p[i] != '*')
+                return false;
+        }
+
+        return true;
+    }
+};
 //Dynamic programing with truth table
 class Solution {
 public:
