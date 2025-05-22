@@ -13,6 +13,7 @@ public:
     }
     void sol(std::vector<int> &nums, std::vector<std::vector<int>> &ans, int idx)
     {
+        //Base case that all element in nums already touched.
         if (idx == nums.size()){
             ans.push_back(nums);
             return;
