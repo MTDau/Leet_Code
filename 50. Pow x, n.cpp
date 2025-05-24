@@ -1,3 +1,30 @@
+//Need to use buffer for the motherfucker that use MIN_INT
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <cmath>
+
+double buffer(double x, long long int n)
+{
+    if (n == 0)
+        return 1;
+    if (n < 0)
+        return 1 / buffer(x, -n);
+    // faster execution
+    if (n % 2 == 1)
+        return x * buffer(x * x, (n - 1) / 2);
+    else
+        return buffer(x * x, n / 2);
+}
+class Solution
+{
+public:
+    double myPow(double x, int n)
+    {
+        return buffer(x,n);
+    }
+};
+
 //First thought runtime problem
 #include <vector>
 #include <algorithm>
