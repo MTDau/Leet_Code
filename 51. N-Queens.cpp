@@ -6,15 +6,15 @@
 class Solution
 {
 public:
-    std::vector<std::vector<std::string>> solveNQueens(int n)
+    inline std::vector<std::vector<std::string>> solveNQueens(int n)
     {
         std::vector<std::vector<std::string>> ans;
         std::string s(n, '.');
-        std::vector<std::string> board(n,s);
+        std::vector<std::string> board(n, s);
         solve(n, 0, board, ans);
         return ans;
     }
-    void solve(int n, int col, std::vector<std::string> &board, std::vector<std::vector<std::string>> &ans)
+    inline void solve(const int &n, int col, std::vector<std::string> &board, std::vector<std::vector<std::string>> &ans)
     {
         if (col == n)
         {
@@ -32,7 +32,7 @@ public:
         }
     }
 
-    bool safePlace(int n, int row, int col, std::vector<std::string> board)
+    inline bool safePlace(const int &n, const int &row, const int &col, std::vector<std::string> &board)
     { // Only need to check the previous row because the lower is now filled.
         for (int y{col}; y > -1; y--)
         {
