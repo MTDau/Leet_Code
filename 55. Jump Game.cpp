@@ -1,3 +1,21 @@
+//New solution
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int prev{nums[0]};
+        bool ans{true};
+        for (int i{1}, step{}; i < nums.size(); i++) {
+            step = nums[i];
+            if (prev == 0) {
+                return ans = false;
+                break;
+            } else if (step > --prev)
+                prev = step;
+        }
+        return ans;
+    }
+};
+
 //Just update the old code
 #include <vector>
 #include <algorithm>
