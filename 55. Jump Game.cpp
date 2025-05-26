@@ -1,16 +1,24 @@
 //New solution
-class Solution {
+#include <vector>
+#include <algorithm>
+
+class Solution
+{
 public:
-    bool canJump(vector<int>& nums) {
-        int prev{nums[0]};
+    bool canJump(std::vector<int> &nums)
+    {
+        int reach{nums[0]};
         bool ans{true};
-        for (int i{1}, step{}; i < nums.size(); i++) {
+        for (int i{1}, step{}; i < nums.size(); i++)
+        {
             step = nums[i];
-            if (prev == 0) {
+            if (reach == 0)
+            {
                 return ans = false;
                 break;
-            } else if (step > --prev)
-                prev = step;
+            }
+            else if (step > --reach)
+                reach = step;
         }
         return ans;
     }
