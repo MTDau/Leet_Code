@@ -1,3 +1,36 @@
+//Way better 3 loop
+#include <vector>
+#include <algorithm>
+using std::vector;
+class Solution
+{
+public:
+    vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInterval)
+    {
+        int left{newInterval[0]}, right{newInterval[1]};
+        int size = intervals.size(), i = 0;
+        std::vector<std::vector<int>> ans;
+        while (i < size && left > intervals[i][1])
+        {
+            ans.push_back(intervals[i]);
+            i++;
+        }
+        while (i < size && right >= intervals[i][0])
+        {
+            left = std::min(left, intervals[i][0]);
+            right = std::max(right, intervals[i][1]);
+            i++;
+        }
+        ans.push_back({left,right});
+        while (i < size)
+        {
+            ans.push_back(intervals[i]);
+            i++;
+        }
+        return ans;
+    }
+};
+//Overthinking complicated code for 1 loop
 #include <vector>
 #include <algorithm>
 using std::vector;
