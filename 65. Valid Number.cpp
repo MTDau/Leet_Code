@@ -33,8 +33,8 @@ public:
                 case '.':
                     if (d_flag || e_flag || size == 1)
                         return false;
-                    else if (i == 0 && !std::isdigit(s[i + 1]))
-                        return false;
+                    //else if (i == 0 && !std::isdigit(s[i + 1]))
+                     //   return false;
                     d_flag = true;
                     break;
                 default:
