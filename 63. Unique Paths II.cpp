@@ -1,3 +1,31 @@
+//Another solution
+#include <string>
+#include <vector>
+
+class Solution
+{
+public:
+    int uniquePathsWithObstacles(std::vector<std::vector<int>> &grid)
+    {
+        if (grid[0][0] == 1)
+            return 0;
+        int r = grid.size(), c = grid[0].size();
+        std::vector<int> dp(c, 0);
+        dp[0] = 1;
+        for (int i{}; i < r; i++)
+        {
+            for (int j{}; j < c; j++)
+            {
+                if (grid[i][j] == 1)
+                    dp[j] = 0;
+                else if (j > 0)
+                    dp[j] += dp[j - 1];
+            }
+        }
+        return dp[c - 1];
+    }
+};
+//Update of the previous one not bad but can be better.
 #include <string>
 #include <vector>
 
