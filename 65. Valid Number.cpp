@@ -25,7 +25,7 @@ public:
                     break;
                 case 'e':
                 case 'E':
-                    if (e_flag || i == size - 1 || i == 0 || !found_digit)
+                    if (e_flag || i == size - 1 || !found_digit)
                         return false;
                     e_flag = true;
                     s_flag = false;
@@ -42,8 +42,6 @@ public:
             else
                 found_digit = true;
         }
-        if (!found_digit)
-            return false;
-        return true;
+        return found_digit;
     }
 };
