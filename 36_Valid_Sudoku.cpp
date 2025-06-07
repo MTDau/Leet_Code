@@ -1,3 +1,59 @@
+//Final update
+#include <string>
+#include <stack>
+#include <algorithm>
+#include <vector>
+#include <unordered_map>
+const int DIM{3};
+class Solution
+{
+public:
+    bool isValidSudoku(std::vector<std::vector<char>> &board)
+    {
+        // Check row and collum
+        std::unordered_map<char, int> r_check, c_check;
+        for (int i{}; i < 9; i++)
+        {
+            for (int j{}; j < 9; j++)
+            {
+                r_check[board[i][j]]++;
+                if (board[i][j] != '.' && r_check[board[i][j]] > 1)
+                    return false;
+                c_check[board[j][i]]++;
+                if (board[j][i] != '.' && c_check[board[j][i]] > 1)
+                    return false;
+            }
+            r_check.clear();
+            c_check.clear();
+        }
+        bool valid{true};
+        for (int r_box{}; r_box < DIM; r_box++){
+            for (int c_box{}; c_box < DIM; c_box++){
+                valid = box_check(r_box,c_box,board);
+                if(!valid)
+                    return false;
+            }
+        }
+        return true;
+    }
+    bool box_check(const int &r_box, const int &col_box, std::vector<std::vector<char>> &board)
+    {
+        std::unordered_map<char, int> check;
+        for (int r{DIM * r_box}; r < DIM + 3 * r_box; r++)
+        {
+            for (int c{DIM * col_box}; c < DIM + 3 * col_box; c++)
+            {
+                char temp = board[r][c];
+                check[temp]++;
+                if (temp != '.' && check[temp] > 1)
+                    return false;
+            }
+        }
+        return true;
+    }
+};
+
+//good one
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
