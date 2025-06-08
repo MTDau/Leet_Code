@@ -20,3 +20,21 @@ public:
         return max;
     }
 };
+
+//Run time error
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        std::unordered_set<int> set(nums.begin(), nums.end());
+        int max{0};
+        for (int num : nums) {
+            if (set.find(num - 1) == set.end()) { // Begin of the sequence
+                int count{1};
+                while (set.find(num + count) != set.end())
+                    count++;
+                max = std::max(max, count);
+            }
+        }
+        return max;
+    }
+};
