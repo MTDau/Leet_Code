@@ -1,3 +1,4 @@
+//this run time is O(nlog(n)) because of sort.
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
