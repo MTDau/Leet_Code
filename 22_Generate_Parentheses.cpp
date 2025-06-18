@@ -1,4 +1,38 @@
+//Back track solution
+class Solution
+{
+    vector<string> generateParenthesis(int n)
+    {
+        vector<string> ans;
+        string temp;
+        int open{}, close{};
+        gen(open, close, n, temp, ans);
+        return ans;
+    }
+    void gen(int open, int close, const int &n, string& temp, vector<string> &ans)
+    {
+        if (open == n && close == n)
+        {
+            ans.push_back(temp);
+            return;
+        }
+        if (open < n)
+        {
+            temp += '(';
+            gen(open + 1, close, n, temp, ans);
+            temp.pop_back();
+        }
+        if (close < open)
+        {
+            temp += ')';
+            gen(open, close + 1, n, temp, ans);
+            temp.pop_back();
+        }
+    }
+};
 
+
+//Recursive indecisive
 class Solution
 {
 private:
