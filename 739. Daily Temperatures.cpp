@@ -26,3 +26,29 @@ public:
         return ans;
     }
 };
+
+//Using stack
+#include <vector>
+#include <stack>
+class Solution
+{
+public:
+    std::vector<int> dailyTemperatures(std::vector<int> &temperatures)
+    {
+        int size = temperatures.size();
+        std::vector<int> ans(size, 0);
+        std::stack<std::vector<int>> stack;//{temperature, idx}
+        for (int i{}; i < size; i++)
+        {
+            int temp = temperatures[i];
+            while (!stack.empty() && temp > stack.top()[0])
+            {
+                auto pair = stack.top();
+                stack.pop();
+                ans[pair[1]] = i - pair[1];
+            }
+            stack.push({temp,i});
+        }
+        return ans;
+    }
+};
