@@ -27,3 +27,22 @@ public:
         return times.size();
     }
 };
+
+std::vector<std::vector<int>> cars; // {position, speed}
+        for (int i = 0; i < position.size(); i++)
+        {
+            cars.push_back({position[i], speed[i]});
+        }
+        std::sort(cars.rbegin(), cars.rend()); // Sort in descending position.
+        int fleets{};
+        double prev_time{};
+        for (auto &car : cars)
+        {
+            double curr_time = (double)(target - car[0]) / car[1];
+            if (curr_time > prev_time)
+            {
+                fleets++;
+                prev_time = curr_time;
+            }
+        }
+        return fleets;
