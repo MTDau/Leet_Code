@@ -39,3 +39,31 @@ public:
 };
 
 //Best solution
+
+#include <cctype>
+#include <string>
+#include <vector>
+
+class Solution
+{
+public:
+    bool isPalindrome(std::string s)
+    {
+        int l = 0;
+        int r = s.length() - 1;
+
+        while (l < r)
+        {
+            if (!isalnum(s[l]))
+                l++;
+            else if (!isalnum(s[r]))
+                r--;
+            else
+            {
+                if (tolower(s[l++]) != tolower(s[r--]))
+                    return false;
+            }
+        }
+        return true;
+    }
+};
